@@ -6,7 +6,7 @@ $capsule =require_once dirname(__DIR__)."/config/database.php";
 if (!$capsule->schema()->hasTable('reservation')) {
     $capsule->schema()->create('reservation', function (Blueprint $table) {
         $table->increments('id');
-        $table->string('nom_utilisateur');
+        $table->string('responsable_reservation');
         $table->string('email_utilisateur');
         $table->string('motif_reservation');
         $table->dateTime('date_debut');
