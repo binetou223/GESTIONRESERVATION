@@ -11,11 +11,12 @@ if (!$capsule->schema()->hasTable('reservation')) {
         $table->string('motif_reservation');
         $table->dateTime('date_debut');
         $table->dateTime('date_fin');
-        $table->timestamps();
         $table->string('status')->default('confirme');
         $table->foreignId('salle_id')->constrained('salle');
+        $table->timestamps();
     });
     echo "Table 'reservation' créée avec succès.";
-} else {
+} else
+ {
     echo "La table 'reservation' existe déjà.";
 }
