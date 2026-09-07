@@ -15,8 +15,8 @@ class ReservationValidator implements ValidatorInterface
             'responsable' => RespectValidator::stringType()->length(2, 120),
             'email'       => RespectValidator::email(),
             'motif'       => RespectValidator::stringType()->length(5, 255),
-            'date_debut'  => RespectValidator::date(),
-            'date_fin'    => RespectValidator::date(),
+            'date_debut'  => RespectValidator::datetime(year: 'Y-m-d H:i:s'),
+            'date_fin'    => RespectValidator::datetime(year: 'Y-m-d H:i:s'),
         ];
 
         foreach ($rules as $champ => $validator) {
