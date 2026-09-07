@@ -7,7 +7,7 @@ $salles = [
         'nom' => 'Amphitheatre ',
         'batiment' => 'A',
         'capacite' => 40,
-        'type' => 'Conférence',
+        'type' => 'amphitheatre',
         'active' => true,
     ],
     [
@@ -21,14 +21,14 @@ $salles = [
         'nom' => 'Laboratoire Chimie',
         'batiment' => 'C',
         'capacite' => 24,
-        'type' => 'Formation',
+        'type' => 'laboratoire',
         'active' => false,
     ],
      [
         'nom' => 'Salle informatique 1',
         'batiment' => 'D',
         'capacite' => 30,
-        'type' => 'cours informatique',
+        'type' => 'informatique',
         'active' => true,
     ],
     [
