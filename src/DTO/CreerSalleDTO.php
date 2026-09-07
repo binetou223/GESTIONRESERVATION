@@ -13,6 +13,7 @@ class CreerSalleDTO
         public readonly string $type,
         public readonly bool $active,
     ) {}
+    
     public static function fromArray(array $data): self
     {
         $validator = new ReservationValidator();
