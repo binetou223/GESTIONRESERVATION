@@ -16,3 +16,9 @@ générer l'autoloading PSR-4, pour éviter de faire des require_once sur chaque
  Pourquoi ne versionne-t-on pas vendor/ ? 
  Le dossier vendor/ contient toutes les bibliothèques téléchargées par Composer.
  Il peut devenir très volumineux et contient des fichiers qui sont générés automatiquement.
+
+
+  Quel rôle joue Capsule\Manager ?
+ Pourquoi Eloquent peut-il fonctionner sans Laravel ?
+ Où doit se trouver le démarrage de l’ORM ?
+ Quelle différence existe entre ORM et SQL écrit à la main ?
