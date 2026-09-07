@@ -1,7 +1,5 @@
 <?php
-
-namespace App\Validation;
-
+namespace App\Validator;
 use Respect\Validation\Validator as RespectValidator;
 use App\Validator\ValidationResult;
 use App\Validator\ValidatorInterface;
