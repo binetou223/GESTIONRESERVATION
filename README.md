@@ -60,3 +60,7 @@ Pour créer et publier une version :
 git tag v1.0.0
 git push origin v1.0.0
 ```
+
+Pour publier les anciens tags, ouvrez le workflow `Publish Docker image` dans
+GitHub Actions, cliquez sur `Run workflow`, puis lancez-le manuellement. Tous
+les tags GitHub existants seront alors publiés sur Docker Hub.
