@@ -1,6 +1,6 @@
 <?php
 require_once dirname(__DIR__)."/vendor/autoload.php";
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
 $capsule = require_once dirname(__DIR__) . '/config/database.php';
 
