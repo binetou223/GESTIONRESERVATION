@@ -22,3 +22,41 @@ générer l'autoloading PSR-4, pour éviter de faire des require_once sur chaque
  Pourquoi Eloquent peut-il fonctionner sans Laravel ?
  Où doit se trouver le démarrage de l’ORM ?
  Quelle différence existe entre ORM et SQL écrit à la main ?
+
+## Lancer avec Docker
+
+Pré-requis : Docker et Docker Compose.
+
+```bash
+docker compose up --build
+```
+
+L'application est ensuite disponible sur http://localhost:8080. Les migrations
+sont exécutées automatiquement au démarrage et les données MySQL sont conservées
+dans le volume `mysql_data`.
+
+Pour arrêter les conteneurs :
+
+```bash
+docker compose down
+```
+
+## Publier l'image sur Docker Hub avec GitHub Actions
+
+L'image Docker est publiée automatiquement lors de la création d'un tag GitHub.
+Par exemple, le tag GitHub `v1.0.0` produit :
+
+```text
+binetou22/gestiondereservation:v1.0.0
+```
+
+Dans les paramètres du dépôt GitHub, ajoutez un secret `DOCKERHUB_TOKEN`
+contenant un access token Docker Hub du compte `binetou22`. Le dépôt Docker Hub
+`binetou22/gestiondereservation` doit exister avant le premier push.
+
+Pour créer et publier une version :
+
+```bash
+git tag v1.0.0
+git push origin v1.0.0
+```

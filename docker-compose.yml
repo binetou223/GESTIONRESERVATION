@@ -1,0 +1,45 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    environment:
+      APP_ENV: development
+      APP_DEBUG: "true"
+      DB_DRIVER: mysql
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: reservation_salles
+      DB_USERNAME: reservation
+      DB_PASSWORD: reservation_password
+    depends_on:
+      db:
+        condition: service_healthy
+    command:
+      - sh
+      - -c
+      - |
+        set -e
+        php database/migration/001_creation_salles.php
+        php database/migration/002_creation_reservation.php
+        apache2-foreground
+
+  db:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: reservation_salles
+      MYSQL_USER: reservation
+      MYSQL_PASSWORD: reservation_password
+      MYSQL_ROOT_PASSWORD: root_password
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u root -p$${MYSQL_ROOT_PASSWORD} --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+volumes:
+  mysql_data:
