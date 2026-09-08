@@ -1,25 +1,24 @@
 <?php
 
-namespace App\Validation;
+namespace App\Validator;
 
 use App\Validator\ValidationResult;
-use App\Validator\ValidatorInterface;
-use Respect\Validation\Validator as RespectValidator;
 use Respect\Validation\Exceptions\NestedValidationException;
-
+use Respect\Validation\Validator as RespectValidator;
 
 class SalleValidator implements ValidatorInterface
 {
     private const TYPES_AUTORISES = ['cours', 'informatique', 'laboratoire', 'amphitheatre', 'reunion'];
+
     public function validate(array $data): ValidationResult
     {
         $errors = [];
         $rules = [
-            'nom'      => RespectValidator::stringType()->length(2, 100),
+            'nom' => RespectValidator::stringType()->length(2, 100),
             'batiment' => RespectValidator::stringType()->length(2, 100),
             'capacite' => RespectValidator::intType()->between(1, 1000),
-            'type'     => RespectValidator::in(self::TYPES_AUTORISES),
-            'active'   => RespectValidator::boolType(),
+            'type' => RespectValidator::in(self::TYPES_AUTORISES),
+            'active' => RespectValidator::boolType(),
         ];
         foreach ($rules as $champ => $validator) {
             try {
@@ -29,9 +28,8 @@ class SalleValidator implements ValidatorInterface
             }
         }
 
-        if ($errors !== []) {
-            return new ValidationResult(valid: false, errors: $errors);
-        }
-        return new ValidationResult(valid: true, data: $data);
+        return $errors === []
+            ? new ValidationResult(valid: true, data: $data)
+            : new ValidationResult(valid: false, errors: $errors);
     }
 }

@@ -6,12 +6,12 @@ $capsule = require_once dirname(__DIR__, 2)."/config/database.php";
 if (!$capsule->schema()->hasTable('reservation')) {
     $capsule->schema()->create('reservation', function (Blueprint $table) {
         $table->increments('id');
-        $table->string('responsable_reservation');
-        $table->string('email_utilisateur');
-        $table->string('motif_reservation');
+        $table->string('responsable');
+        $table->string('email');
+        $table->string('motif');
         $table->dateTime('date_debut');
         $table->dateTime('date_fin');
-        $table->string('status')->default('confirme');
+        $table->string('statut')->default('confirmée');
         $table->unsignedInteger('salle_id');
         $table->foreign('salle_id')->references('id')->on('salle');
         $table->timestamps();

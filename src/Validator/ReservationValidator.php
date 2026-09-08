@@ -1,9 +1,9 @@
 <?php
+
 namespace App\Validator;
-use Respect\Validation\Validator as RespectValidator;
-use App\Validator\ValidationResult;
-use App\Validator\ValidatorInterface;
+
 use Respect\Validation\Exceptions\NestedValidationException;
+use Respect\Validation\Validator as RespectValidator;
 
 class ReservationValidator implements ValidatorInterface
 {
@@ -11,12 +11,12 @@ class ReservationValidator implements ValidatorInterface
     {
         $errors = [];
         $rules = [
-            'salle_id'    => RespectValidator::intType()->positive(),
+            'salle_id' => RespectValidator::intType()->positive(),
             'responsable' => RespectValidator::stringType()->length(2, 120),
-            'email'       => RespectValidator::email(),
-            'motif'       => RespectValidator::stringType()->length(5, 255),
-            'date_debut'  => RespectValidator::datetime(year: 'Y-m-d H:i:s'),
-            'date_fin'    => RespectValidator::datetime(year: 'Y-m-d H:i:s'),
+            'email' => RespectValidator::email(),
+            'motif' => RespectValidator::stringType()->length(5, 255),
+            'date_debut' => RespectValidator::datetime(year: 'Y-m-d H:i:s'),
+            'date_fin' => RespectValidator::datetime(year: 'Y-m-d H:i:s'),
         ];
 
         foreach ($rules as $champ => $validator) {
@@ -27,9 +27,8 @@ class ReservationValidator implements ValidatorInterface
             }
         }
 
-        if ($errors !== []) {
-            return new ValidationResult(valid: false, errors: $errors);
-        }
-               return new ValidationResult(valid: true, data: $data);
+        return $errors === []
+            ? new ValidationResult(valid: true, data: $data)
+            : new ValidationResult(valid: false, errors: $errors);
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\DTO;
-use App\Validator\ReservationValidator;
+use App\Validator\SalleValidator;
 
 class CreerSalleDTO
 {
@@ -15,10 +15,10 @@ class CreerSalleDTO
     
     public static function fromArray(array $data): self
     {
-        $validator = new ReservationValidator();
+        $validator = new SalleValidator();
         $validationResult = $validator->validate($data);
         if (!$validationResult->isValid()) {
-            throw new \InvalidArgumentException('Données de salle invalides : ' . json_encode($validationResult->getErrors()));
+            throw new \InvalidArgumentException('Données de salle invalides : ' . json_encode($validationResult->errors()));
         }
         return new self(
             nom: (string) $data['nom'],
