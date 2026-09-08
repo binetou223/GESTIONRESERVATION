@@ -1,7 +1,6 @@
 <?php
 
 namespace App\DTO;
-
 use App\Validator\ReservationValidator;
 
 class CreerSalleDTO

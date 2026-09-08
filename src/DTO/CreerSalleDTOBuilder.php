@@ -1,5 +1,6 @@
 <?php
 namespace App\DTO;
+use App\DTO\CreerSalleDTO;
 class CreerSalleDTOBuilder
 {
     private string $nom;
