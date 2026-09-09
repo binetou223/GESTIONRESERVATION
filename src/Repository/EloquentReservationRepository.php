@@ -9,11 +9,11 @@ final class EloquentReservationRepository implements ReservationRepositoryInterf
 {
     public function lister(): array
     {
-        return Reservation::all()->all();
+        return Reservation::with('salle')->orderBy('date_debut')->get()->all();
     }
     public function retrouver(int $id): ?Reservation
     {
-        return Reservation::find($id);
+        return Reservation::with('salle')->find($id);
     }
     public function enregistrer(Reservation $reservation): Reservation
     {

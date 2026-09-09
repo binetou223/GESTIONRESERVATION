@@ -18,10 +18,11 @@
     </div>
 <?php else: ?>
     <table>
-        <thead><tr><th>Responsable</th><th>Début</th><th>Fin</th><th>Statut</th><th></th></tr></thead>
+        <thead><tr><th>Salle</th><th>Responsable</th><th>Début</th><th>Fin</th><th>Statut</th><th></th></tr></thead>
         <tbody>
         <?php foreach ($reservations as $reservation): ?>
             <tr>
+                <td><?= e($reservation->salle?->nom ?? 'Salle inconnue') ?></td>
                 <td><?= e($reservation->responsable) ?></td>
                 <td><?= e($reservation->date_debut) ?></td>
                 <td><?= e($reservation->date_fin) ?></td>
