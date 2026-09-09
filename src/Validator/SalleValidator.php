@@ -10,6 +10,11 @@ class SalleValidator implements ValidatorInterface
 {
     private const TYPES_AUTORISES = ['cours', 'informatique', 'laboratoire', 'amphitheatre', 'reunion'];
 
+    public function supports(string $type): bool
+    {
+        return $type === 'salle';
+    }
+
     public function validate(array $data): ValidationResult
     {
         $errors = [];

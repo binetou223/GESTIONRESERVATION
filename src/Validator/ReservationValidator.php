@@ -7,6 +7,11 @@ use Respect\Validation\Exceptions\NestedValidationException;
 
 class ReservationValidator implements ValidatorInterface
 {
+    public function supports(string $type): bool
+    {
+        return $type === 'reservation';
+    }
+
     public function validate(array $data): ValidationResult
     {
         $errors = [];
