@@ -15,11 +15,6 @@ class CreerReservationDTO
     }
     public static function fromArray(array $data): self
     {
-        $validator = new ReservationValidator();
-        $validationResult = $validator->validate($data);
-        if (!$validationResult->isValid()) {
-            throw new \InvalidArgumentException('Données de réservation invalides : ' . json_encode($validationResult->getErrors()));
-        }
         return new self(
             salle_id: (int) $data['salle_id'],
             responsable: (string) $data['responsable'],

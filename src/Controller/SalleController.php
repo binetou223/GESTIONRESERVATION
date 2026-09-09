@@ -73,7 +73,7 @@ final class SalleController extends AbstractController
 
         return $this->renderView('salle/form', [
             'title' => 'Modifier une salle',
-            'action' => "/salles/{$id}/update",
+            'action' => "/salles/{$id}/edit",
             'salle' => $salle,
             'old' => $old,
             'errors' => $errors,

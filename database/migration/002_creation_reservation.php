@@ -18,6 +18,6 @@ if (!$capsule->schema()->hasTable('reservation')) {
     });
     echo "Table 'reservation' créée avec succès.";
 } else
- {
+{
     echo "La table 'reservation' existe déjà.";
 }

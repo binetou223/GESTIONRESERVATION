@@ -15,11 +15,6 @@ class CreerSalleDTO
     
     public static function fromArray(array $data): self
     {
-        $validator = new SalleValidator();
-        $validationResult = $validator->validate($data);
-        if (!$validationResult->isValid()) {
-            throw new \InvalidArgumentException('Données de salle invalides : ' . json_encode($validationResult->errors()));
-        }
         return new self(
             nom: (string) $data['nom'],
             batiment: (string) $data['batiment'],
