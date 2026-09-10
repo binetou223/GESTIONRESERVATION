@@ -1,0 +1,31 @@
+<?php
+
+require_once './vendor/autoload.php';
+
+define('BASE_PATH', __DIR__);
+
+$dotenv = Dotenv\Dotenv::createImmutable(BASE_PATH);
+$dotenv->load();
+
+$command = $argv[1] ?? null;
+
+switch ($command) {
+
+    case 'migrate':
+
+        require './bin/migrate.php';
+        break;
+
+    case 'seed':
+        require './bin/seed.php';
+        break;
+
+    default:
+        echo "Commande inconnue.\n\n";
+
+        echo "Commandes disponibles :\n";
+        echo "  php app migrate\n";
+        echo "  php app seed\n";
+
+        exit(1);
+}
