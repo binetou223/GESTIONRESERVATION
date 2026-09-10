@@ -9,6 +9,7 @@ use App\Repository\SalleRepositoryInterface;
 use App\Services\AnnulerReservationService;
 use App\Services\CreerReservationService;
 use App\Validator\ReservationValidator;
+use App\Validator\ValidatorInterface;
 use DateTimeImmutable;
 
 final class ReservationController extends AbstractController
@@ -16,7 +17,7 @@ final class ReservationController extends AbstractController
     public function __construct(
         private readonly ReservationRepositoryInterface $reservations,
         private readonly SalleRepositoryInterface $salles,
-        private readonly ReservationValidator $validator,
+        private readonly ValidatorInterface $validatorReservation,
         private readonly CreerReservationService $creation,
         private readonly AnnulerReservationService $annulation,
     ) {
@@ -94,7 +95,7 @@ final class ReservationController extends AbstractController
             'date_debut' => $this->normalizeDate($input['date_debut'] ?? ''),
             'date_fin' => $this->normalizeDate($input['date_fin'] ?? ''),
         ];
-        $result = $this->validator->validate($data);
+        $result = $this->validatorReservation->validate($data);
         return [$data, $result->isValid() ? [] : $result->errors()];
     }
 

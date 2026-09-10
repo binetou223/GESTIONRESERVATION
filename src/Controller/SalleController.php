@@ -5,12 +5,13 @@ namespace App\Controller;
 use App\DTO\CreerSalleDTOBuilder;
 use App\Repository\SalleRepositoryInterface;
 use App\Validator\SalleValidator;
+use App\Validator\ValidatorInterface;
 
 final class SalleController extends AbstractController
 {
     public function __construct(
         private readonly SalleRepositoryInterface $salles,
-        private readonly SalleValidator $validator,
+        private readonly ValidatorInterface $validatorSalle,
     ) {
     }
 
@@ -106,7 +107,7 @@ final class SalleController extends AbstractController
             'type' => strtolower(trim((string) ($input['type'] ?? ''))),
             'active' => isset($input['active']) && (string) $input['active'] !== '0',
         ];
-        $result = $this->validator->validate($data);
+        $result = $this->validatorSalle->validate($data);
         return [$data, $result->isValid() ? [] : $result->errors()];
     }
 
