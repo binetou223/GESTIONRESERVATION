@@ -22,8 +22,7 @@ services:
       - -c
       - |
         set -e
-        php database/migration/001_creation_salles.php
-        php database/migration/002_creation_reservation.php
+        php app migrate
         apache2-foreground
 
   db:
