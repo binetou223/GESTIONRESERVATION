@@ -1,5 +1,4 @@
 <?php
-use illuminate\Database\Capsule\Manager as Capsule;
 use Illuminate\Database\Schema\Blueprint;
 require_once dirname(__DIR__, 2)."/vendor/autoload.php";
 $capsule = require dirname(__DIR__, 2) . '/config/database.php';

@@ -34,7 +34,7 @@ return [
 
     SalleController::class => autowire()
         ->constructorParameter(
-            'validator',
+            'validatorSalle',
             get(SalleValidator::class)
         ),
     Manager::class => factory(static function (): Manager {

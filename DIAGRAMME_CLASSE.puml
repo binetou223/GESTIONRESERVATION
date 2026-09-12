@@ -1,0 +1,25 @@
+@startuml reservations-Salle
+class Salle {
+      id : int
+     nom : string
+     batiment : string
+     capacite : int
+     type : string
+     active : bool
+}
+
+class Reservation {
+     id : int
+     salle_id : int
+     responsable : string
+     email : string
+     motif : string
+     date_debut : DateTime
+     date_fin : DateTime
+     statut : string
+}
+
+Salle "1" -- "0..*" Reservation 
+Reservation "0..*" --"1" Salle 
+
+@enduml

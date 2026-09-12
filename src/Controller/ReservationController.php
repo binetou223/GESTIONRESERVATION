@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\DTO\CreerReservationDTOBuilder;
+use App\Exception\ReservationIntrouvableException;
 use App\Exception\SalleIndisponibleException;
 use App\Repository\ReservationRepositoryInterface;
 use App\Repository\SalleRepositoryInterface;
@@ -78,7 +79,7 @@ final class ReservationController extends AbstractController
     {
         try {
             $this->annulation->executer($id);
-        } catch (\RuntimeException) {
+        } catch (ReservationIntrouvableException) {
             return $this->notFound();
         }
 

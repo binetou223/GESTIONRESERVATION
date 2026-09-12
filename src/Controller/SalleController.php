@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\DTO\CreerSalleDTOBuilder;
 use App\Repository\SalleRepositoryInterface;
-use App\Validator\SalleValidator;
 use App\Validator\ValidatorInterface;
 
 final class SalleController extends AbstractController

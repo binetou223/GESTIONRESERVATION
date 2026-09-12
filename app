@@ -5,7 +5,7 @@ require_once './vendor/autoload.php';
 define('BASE_PATH', __DIR__);
 
 $dotenv = Dotenv\Dotenv::createImmutable(BASE_PATH);
-$dotenv->load();
+$dotenv->safeLoad();
 
 $command = $argv[1] ?? null;
 
