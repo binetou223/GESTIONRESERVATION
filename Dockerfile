@@ -30,4 +30,4 @@ COPY . .
 
 EXPOSE 80
 
-CMD ["apache2-foreground"]
+CMD ["sh", "-c", "php app migrate && apache2-foreground"]
